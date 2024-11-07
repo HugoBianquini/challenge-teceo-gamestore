@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { CategoryService } from './category.service';
 
-@Controller('category')
-export class CategoryController {}
+@Controller('categories')
+export class CategoryController {
+  constructor(private readonly categoryService: CategoryService) {}
+
+  @Get()
+  findAll() {
+    return 'All Categories';
+  }
+}
