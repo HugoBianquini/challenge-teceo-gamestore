@@ -1,5 +1,7 @@
+import Home from "./pages/home";
+
 function App() {
-  return <h1>Hello, World! Bem-vindo à gamestore</h1>;
+  return <Home />;
 }
 
 export default App;

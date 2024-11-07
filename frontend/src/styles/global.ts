@@ -9,9 +9,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    max-width: 100vw;
+    height: 100vh;
     font-family: 'Roboto';
-    background-color: ${theme.colors.grey[900]};
-    color: ${theme.colors.white};
+    background-color: ${theme.colors.light};
+    color: ${theme.colors.dark};
     overscroll-behavior-y: none;
   }
 
