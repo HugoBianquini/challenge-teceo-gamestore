@@ -6,12 +6,26 @@ import { UpdateGameDto } from './dto/update-game.dto';
 export class GameService {
   constructor(private prisma: PrismaService) {}
 
-  findAll() {
-    return this.prisma.game.findMany();
+  async findAll(page: number, limit: number) {
+    const skip = (page - 1) * limit;
+
+    const games = await this.prisma.game.findMany({
+      skip: skip,
+      take: limit,
+    });
+
+    return {
+      data: games,
+      page,
+    };
   }
 
   findOne(id: string) {
     return this.prisma.game.findUnique({ where: { id } });
+  }
+
+  async count() {
+    return await this.prisma.game.count();
   }
 
   update(id: string, updateEventDto: UpdateGameDto) {

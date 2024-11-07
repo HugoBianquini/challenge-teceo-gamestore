@@ -6,6 +6,7 @@ import {
   HttpCode,
   Param,
   Patch,
+  Query,
 } from '@nestjs/common';
 import { GameService } from './game.service';
 import { UpdateGameDto } from './dto/update-game.dto';
@@ -15,8 +16,18 @@ export class GameController {
   constructor(private readonly gameService: GameService) {}
 
   @Get()
-  findAll() {
-    return this.gameService.findAll();
+  findAll(
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10',
+  ) {
+    const pageNumber = parseInt(page);
+    const pageSize = parseInt(limit);
+    return this.gameService.findAll(pageNumber, pageSize);
+  }
+
+  @Get('count')
+  count() {
+    return this.gameService.count();
   }
 
   @Get(':id')
