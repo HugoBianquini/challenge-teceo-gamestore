@@ -1,16 +1,18 @@
 import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
-  html, body, #root {
-    width: 100vw;
-    height: 100vh;
-
-    margin: 0;
+  * {
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
+  }
 
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+  body {
+    font-family: 'Roboto';
+    background-color: ${theme.colors.grey[900]};
+    color: ${theme.colors.white};
+    overscroll-behavior-y: none;
   }
 
   main {
