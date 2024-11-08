@@ -1,19 +1,20 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.main`
-  display: flex;
   width: 100vw;
   height: 100vh;
 `;
 
-export const Container = styled.main`
+export const Container = styled.div`
   display: flex;
   width: 100%;
   align-items: baseline;
   justify-content: center;
+  flex-direction: column;
+  align-self: baseline;
 `;
 
-export const Header = styled.main`
+export const Header = styled.div`
   ${({ theme }) => css`
     position: relative;
     display: flex;
@@ -21,10 +22,12 @@ export const Header = styled.main`
     height: 20%;
     background: ${theme.colors.grey[900]};
     padding: 32px 24px 32px 24px;
+    align-items: center;
+    justify-content: center;
   `}
 `;
 
-export const Content = styled.main`
+export const Content = styled.div`
   display: flex;
   width: 100%;
   align-items: baseline;
@@ -32,10 +35,11 @@ export const Content = styled.main`
   padding: 32px 24px 32px 24px;
 `;
 
-export const TitleContainer = styled.main`
+export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 16px;
   height: fit-content;
   color: ${({ theme }) => theme.colors.light};
+  align-items: center;
 `;

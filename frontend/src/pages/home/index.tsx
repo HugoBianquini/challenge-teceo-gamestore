@@ -1,4 +1,5 @@
-import { Container, Header, TitleContainer, Wrapper } from "./styles";
+import GameCard from "../../components/GameCard";
+import { Container, Content, Header, TitleContainer, Wrapper } from "./styles";
 
 const Home = () => {
   return (
@@ -10,6 +11,9 @@ const Home = () => {
             <span>Confira os games no catálogo</span>
           </TitleContainer>
         </Header>
+        <Content>
+          <GameCard />
+        </Content>
       </Container>
     </Wrapper>
   );
