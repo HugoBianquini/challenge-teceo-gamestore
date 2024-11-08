@@ -4,13 +4,13 @@ export const Container = styled.div`
   display: flex;
   position: relative;
   width: 680px;
-  height: 200px;
+  min-height: 200px;
+  max-height: 300px;
   align-items: center;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.colors.white};
   transition: box-shadow 0.3s ease-in-out;
   padding: 24px 32px 24px 18px;
-  cursor: pointer;
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -19,6 +19,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   max-width: 140px;
+  cursor: pointer;
 `;
 
 export const Content = styled.div`

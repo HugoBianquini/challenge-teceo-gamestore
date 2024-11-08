@@ -9,34 +9,44 @@ import {
   TextContainer,
 } from "./styles";
 import Checkbox from "../Checkbox";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import EditableContent from "./partials/EditableContent";
 
 const GameCard = () => {
   const [isSelected, setSelected] = useState(false);
+  const [isEdit, setEdit] = useState(false);
 
-  const onSelect = () => {
-    setSelected((prev) => !prev);
-  };
+  const onSelect = useCallback(() => {
+    return setSelected((prev) => !prev);
+  }, []);
+
+  const handleEditButtonClick = useCallback(() => {
+    return setEdit((prev) => !prev);
+  }, []);
 
   return (
-    <Container onClick={onSelect}>
+    <Container>
       <div>
         <Checkbox checked={isSelected} onChange={onSelect} />
       </div>
-      <Image src="/xbox-logo.svg" alt="xbox logo" />
+      <Image src="/xbox-logo.svg" alt="xbox logo" onClick={onSelect} />
       <Content>
-        <TextContainer>
-          <h2>Jogo Bike</h2>
-          <span>
-            Sursum creator concido aestivus aureus. Usque amiculum compono
-            veritas cimentarius casus deorsum.
-          </span>
-        </TextContainer>
+        {isEdit ? (
+          <EditableContent setEdit={handleEditButtonClick} />
+        ) : (
+          <TextContainer>
+            <h2>Jogo Bike</h2>
+            <span>
+              Sursum creator concido aestivus aureus. Usque amiculum compono
+              veritas cimentarius casus deorsum.
+            </span>
+          </TextContainer>
+        )}
         <div>
           <PriceText>R$ 29,99</PriceText>
         </div>
       </Content>
-      <EditIconContainer onClick={(e) => e.stopPropagation()}>
+      <EditIconContainer onClick={handleEditButtonClick}>
         <Edit />
       </EditIconContainer>
       <CategoryContainer>
