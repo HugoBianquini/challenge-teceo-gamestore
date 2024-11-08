@@ -12,6 +12,9 @@ export class GameService {
     const games = await this.prisma.game.findMany({
       skip: skip,
       take: limit,
+      include: {
+        category: true,
+      },
     });
 
     return {
@@ -25,7 +28,8 @@ export class GameService {
   }
 
   async count() {
-    return await this.prisma.game.count();
+    const count = await this.prisma.game.count();
+    return { total: count };
   }
 
   update(id: string, updateEventDto: UpdateGameDto) {
