@@ -3,7 +3,7 @@ import { IGames } from "@/services/games/index.type";
 import { useCallback, useContext, useMemo } from "react";
 
 export const useGames = () => {
-  const { setGames, games } = useContext(GameContext);
+  const { setGames, games, setSelectAll, selectAll } = useContext(GameContext);
 
   const handleSelectGame = useCallback((index: number) => {
     setGames((prev) => {
@@ -21,6 +21,18 @@ export const useGames = () => {
     });
   }, []);
 
+  const handleSelectAll = useCallback(() => {
+    const allSelected = games.map((item) => ({ ...item, isSelected: true }));
+    setSelectAll(true);
+    setGames(allSelected);
+  }, [games]);
+
+  const handleRemoveSelection = useCallback(() => {
+    const notSelected = games.map((item) => ({ ...item, isSelected: false }));
+    setSelectAll(false);
+    setGames(notSelected);
+  }, [games]);
+
   const selectedGames = useMemo(() => {
     return games.filter((item) => item.isSelected);
   }, [games]);
@@ -28,6 +40,9 @@ export const useGames = () => {
   return {
     handleSelectGame,
     handleUpdateGame,
+    handleSelectAll,
+    handleRemoveSelection,
+    selectAll,
     selectedGames,
   };
 };

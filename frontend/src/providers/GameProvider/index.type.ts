@@ -8,6 +8,8 @@ export interface IGameItem extends IGames {
 export interface IGameContext {
   games: IGameItem[];
   setGames: React.Dispatch<React.SetStateAction<IGameItem[]>>;
+  selectAll: boolean;
+  setSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface IGameProviderProps {
