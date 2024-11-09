@@ -3,10 +3,14 @@ import Input from "../../../Input";
 import { ButtonRow, Container, TextArea } from "./styles";
 import Button from "../../../Button";
 import { IEditableContentProps } from "./index.type";
+import { updateGame } from "@/services/games";
+import { useGames } from "@/hooks/useGames";
 
-const EditableContent = ({ setEdit }: IEditableContentProps) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+const EditableContent = ({ setEdit, game, index }: IEditableContentProps) => {
+  const { handleUpdateGame } = useGames();
+
+  const [title, setTitle] = useState(game.title);
+  const [description, setDescription] = useState(game.description);
 
   const handleChangeTitle = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -18,6 +22,17 @@ const EditableContent = ({ setEdit }: IEditableContentProps) => {
     },
     []
   );
+
+  const fetchUpdateGame = useCallback(async () => {
+    const updatedGame = { title, description };
+
+    const { data, status } = await updateGame(game.id, updatedGame);
+
+    if (status === 200) {
+      setEdit();
+      handleUpdateGame(index, data);
+    }
+  }, []);
 
   return (
     <Container>
@@ -31,7 +46,7 @@ const EditableContent = ({ setEdit }: IEditableContentProps) => {
         <Button variant="error" onClick={setEdit}>
           Cancelar
         </Button>
-        <Button variant="regular" onClick={setEdit}>
+        <Button variant="regular" onClick={fetchUpdateGame}>
           Salvar
         </Button>
       </ButtonRow>
