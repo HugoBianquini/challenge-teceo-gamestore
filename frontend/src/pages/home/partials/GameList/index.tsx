@@ -1,7 +1,8 @@
 import GameCard from "@/components/GameCard";
-import { Container, HeaderContainer, ListItem } from "./styles";
+import { Container, ListItem } from "./styles";
 import { Virtuoso } from "react-virtuoso";
 import { useInfiniteGames } from "@/hooks/useInfiniteGames";
+import ListHeader from "../ListHeader";
 
 const GameList = () => {
   const { data, hasNextPage, fetchNextPage, totalItems } = useInfiniteGames();
@@ -14,11 +15,7 @@ const GameList = () => {
   };
 
   const Header = () => {
-    return (
-      <HeaderContainer>
-        <h2>{totalItems} games encontrados</h2>
-      </HeaderContainer>
-    );
+    return <ListHeader totalItems={totalItems} />;
   };
 
   return (

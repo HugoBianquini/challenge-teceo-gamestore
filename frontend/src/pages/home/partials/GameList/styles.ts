@@ -27,13 +27,3 @@ export const ListItem = styled.div`
   justify-content: center;
   row-gap: 18px;
 `;
-
-export const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  row-gap: 18px;
-  margin-bottom: 28px;
-`;

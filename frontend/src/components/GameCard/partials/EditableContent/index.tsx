@@ -32,7 +32,7 @@ const EditableContent = ({ setEdit, game, index }: IEditableContentProps) => {
       setEdit();
       handleUpdateGame(index, data);
     }
-  }, []);
+  }, [title, description]);
 
   return (
     <Container>

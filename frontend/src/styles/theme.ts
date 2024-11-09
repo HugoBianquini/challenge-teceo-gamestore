@@ -17,6 +17,8 @@ export const theme = {
       900: "#161b1f",
     },
     cyan: {
+      100: "#B2EBF2",
+      200: "#80DEEA",
       500: "#61dafb",
     },
     yellow: {
