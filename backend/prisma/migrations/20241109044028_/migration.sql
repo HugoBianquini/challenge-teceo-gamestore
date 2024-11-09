@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Game" ADD COLUMN     "discount" DOUBLE PRECISION NOT NULL DEFAULT 0;

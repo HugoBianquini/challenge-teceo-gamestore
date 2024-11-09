@@ -19,7 +19,7 @@ async function main() {
   });
 
   const createdCategories = await prisma.category.findMany();
-  const platforms = ['xbox', 'ps', 'nintendo', 'pc'];
+  const platforms = ['xbox', 'ps', 'pc', 'nintendo'];
   const status = ['available', 'unavailable'];
 
   const gamesData = Array.from({ length: 40 }, () => ({
@@ -29,6 +29,7 @@ async function main() {
     categoryId: faker.helpers.arrayElement(createdCategories).id,
     platform: faker.helpers.arrayElement(platforms) as GamePlatform,
     status: faker.helpers.arrayElement(status) as GameStatus,
+    discount: 0,
   }));
 
   await prisma.game.createMany({
