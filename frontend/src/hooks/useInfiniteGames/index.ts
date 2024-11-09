@@ -26,7 +26,11 @@ export const useInfiniteGames = () => {
 
   const fetchGames = async () => {
     const gamesResponse = await getGames(page.current, PAGE_SIZE);
-    setGames((prev) => prev.concat(mapGames(gamesResponse.data)));
+    setGames((prev) =>
+      page.current === 1
+        ? mapGames(gamesResponse.data)
+        : prev.concat(mapGames(gamesResponse.data))
+    );
   };
 
   useEffect(() => {
