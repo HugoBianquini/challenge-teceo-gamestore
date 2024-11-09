@@ -14,6 +14,7 @@ export interface IGameCategory {
 }
 
 export interface IGames {
+  id: string;
   title: string;
   description: string;
   category: IGameCategory;

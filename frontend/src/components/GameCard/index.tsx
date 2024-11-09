@@ -11,14 +11,21 @@ import {
 import Checkbox from "../Checkbox";
 import { useCallback, useState } from "react";
 import EditableContent from "./partials/EditableContent";
+import { ECategory, IGameCardProps } from "./index.type";
+import { useGames } from "@/hooks/useGames";
+import { formatToBRL } from "@/utils/priceFormatter";
 
-const GameCard = () => {
-  const [isSelected, setSelected] = useState(false);
+const GameCard = ({ game, index }: IGameCardProps) => {
+  const { handleSelectGame } = useGames();
+
   const [isEdit, setEdit] = useState(false);
 
+  const { title, description, category, price } = game;
+
   const onSelect = useCallback(() => {
-    return setSelected((prev) => !prev);
-  }, []);
+    handleSelectGame(index);
+    console.log(game);
+  }, [index]);
 
   const handleEditButtonClick = useCallback(() => {
     return setEdit((prev) => !prev);
@@ -27,30 +34,31 @@ const GameCard = () => {
   return (
     <Container>
       <div>
-        <Checkbox checked={isSelected} onChange={onSelect} />
+        <Checkbox checked={game.isSelected} onChange={onSelect} />
       </div>
       <Image src="/xbox-logo.svg" alt="xbox logo" onClick={onSelect} />
       <Content>
         {isEdit ? (
-          <EditableContent setEdit={handleEditButtonClick} />
+          <EditableContent
+            setEdit={handleEditButtonClick}
+            game={game}
+            index={index}
+          />
         ) : (
           <TextContainer>
-            <h2>Jogo Bike</h2>
-            <span>
-              Sursum creator concido aestivus aureus. Usque amiculum compono
-              veritas cimentarius casus deorsum.
-            </span>
+            <h2>{title}</h2>
+            <span>{description}</span>
           </TextContainer>
         )}
         <div>
-          <PriceText>R$ 29,99</PriceText>
+          <PriceText>{formatToBRL(price)}</PriceText>
         </div>
       </Content>
       <EditIconContainer onClick={handleEditButtonClick}>
         <Edit />
       </EditIconContainer>
       <CategoryContainer>
-        <span>Aventura</span>
+        <span>{ECategory[category.title]}</span>
       </CategoryContainer>
     </Container>
   );

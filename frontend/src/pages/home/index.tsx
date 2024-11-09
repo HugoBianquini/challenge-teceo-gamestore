@@ -1,4 +1,4 @@
-import GameCard from "../../components/GameCard";
+import GameList from "./partials/GameList";
 import { Container, Content, Header, TitleContainer, Wrapper } from "./styles";
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
           </TitleContainer>
         </Header>
         <Content>
-          <GameCard />
+          <GameList />
         </Content>
       </Container>
     </Wrapper>

@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.main`
-  width: 100vw;
   height: 100vh;
 `;
 
 export const Container = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   align-items: baseline;
   justify-content: center;
   flex-direction: column;
@@ -30,6 +30,7 @@ export const Header = styled.div`
 export const Content = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   align-items: baseline;
   justify-content: center;
   padding: 32px 24px 32px 24px;
