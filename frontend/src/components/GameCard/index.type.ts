@@ -13,3 +13,10 @@ export enum ECategory {
   strategy = "Estratégia",
   rpg = "RPG",
 }
+
+export enum EImagePlatform {
+  xbox = "xbox-logo.svg",
+  ps = "psn-logo.svg",
+  pc = "windows-logo.webp",
+  nintendo = "nintendo-logo.png",
+}

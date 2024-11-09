@@ -11,7 +11,7 @@ import {
 import Checkbox from "../Checkbox";
 import { useCallback, useState } from "react";
 import EditableContent from "./partials/EditableContent";
-import { ECategory, IGameCardProps } from "./index.type";
+import { ECategory, EImagePlatform, IGameCardProps } from "./index.type";
 import { useGames } from "@/hooks/useGames";
 import { formatToBRL } from "@/utils/priceFormatter";
 
@@ -20,7 +20,7 @@ const GameCard = ({ game, index }: IGameCardProps) => {
 
   const [isEdit, setEdit] = useState(false);
 
-  const { title, description, category, price } = game;
+  const { title, description, category, platform, price } = game;
 
   const onSelect = useCallback(() => {
     handleSelectGame(index);
@@ -36,7 +36,11 @@ const GameCard = ({ game, index }: IGameCardProps) => {
       <div>
         <Checkbox checked={game.isSelected} onChange={onSelect} />
       </div>
-      <Image src="/xbox-logo.svg" alt="xbox logo" onClick={onSelect} />
+      <Image
+        src={EImagePlatform[platform]}
+        alt="xbox logo"
+        onClick={onSelect}
+      />
       <Content>
         {isEdit ? (
           <EditableContent
