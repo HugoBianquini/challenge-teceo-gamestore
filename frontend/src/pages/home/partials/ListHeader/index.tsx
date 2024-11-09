@@ -4,7 +4,7 @@ import SelectedSection from "../SelectedSection";
 import { IListHeaderProps } from "./index.type";
 import Checkbox from "@/components/Checkbox";
 
-const ListHeader = ({ totalItems }: IListHeaderProps) => {
+const ListHeader = ({ totalItems, openModal }: IListHeaderProps) => {
   const { selectedGames, selectAll, handleSelectAll, handleRemoveSelection } =
     useGames();
 
@@ -21,7 +21,7 @@ const ListHeader = ({ totalItems }: IListHeaderProps) => {
         <h3>Games no catálogo: {totalItems}</h3>
       </Row>
 
-      {selectedGames.length > 0 && <SelectedSection />}
+      {selectedGames.length > 0 && <SelectedSection openModal={openModal} />}
     </HeaderContainer>
   );
 };
