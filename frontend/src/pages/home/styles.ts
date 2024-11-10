@@ -33,7 +33,7 @@ export const Content = styled.div`
   height: 100%;
   align-items: baseline;
   justify-content: center;
-  padding: 32px 24px 32px 24px;
+  padding: 32px 24px 16px 24px;
 `;
 
 export const TitleContainer = styled.div`

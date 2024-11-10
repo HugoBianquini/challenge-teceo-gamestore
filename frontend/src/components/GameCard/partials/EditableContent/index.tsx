@@ -5,6 +5,7 @@ import Button from "../../../Button";
 import { IEditableContentProps } from "./index.type";
 import { updateGame } from "@/services/games";
 import { useGames } from "@/hooks/useGames";
+import { toast } from "react-toastify";
 
 const EditableContent = ({ setEdit, game, index }: IEditableContentProps) => {
   const { handleUpdateGame } = useGames();
@@ -25,12 +26,16 @@ const EditableContent = ({ setEdit, game, index }: IEditableContentProps) => {
 
   const fetchUpdateGame = useCallback(async () => {
     const updatedGame = { title, description };
+    try {
+      const { data, status } = await updateGame(game.id, updatedGame);
 
-    const { data, status } = await updateGame(game.id, updatedGame);
-
-    if (status === 200) {
-      setEdit();
-      handleUpdateGame(index, data);
+      if (status === 200) {
+        setEdit();
+        handleUpdateGame(index, data);
+        toast.success("Item atualizado com sucesso!");
+      }
+    } catch {
+      toast.error("Não foi possível atualizar o item");
     }
   }, [title, description]);
 

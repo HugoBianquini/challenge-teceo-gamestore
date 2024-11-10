@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Button from "@/components/Button";
 import { updateMassDiscount } from "@/services/games";
 import { IFooterProps } from "./index.type";
+import { toast } from "react-toastify";
 
 const ModalFooter = ({ closeModal }: IFooterProps) => {
   const {
@@ -32,10 +33,17 @@ const ModalFooter = ({ closeModal }: IFooterProps) => {
     };
 
     setLoading(true);
-    await updateMassDiscount(payload);
-    setLoading(false);
-    handleRemoveSelection();
-    closeModal();
+
+    try {
+      const response = await updateMassDiscount(payload);
+      setLoading(false);
+      handleRemoveSelection();
+      closeModal();
+      toast.success(`${response.data.count} itens atualizados com sucesso!`);
+    } catch {
+      setLoading(false);
+      toast.error("Não foi possível realizar a alteração dos itens");
+    }
   };
 
   return (

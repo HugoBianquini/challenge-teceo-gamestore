@@ -3,6 +3,8 @@ import { IGameItem } from "@/providers/GameProvider/index.type";
 import { getGames, getGamesCount } from "@/services/games";
 import { IGames } from "@/services/games/index.type";
 import { useCallback, useContext, useEffect, useRef } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PAGE_SIZE = 10;
 
@@ -27,12 +29,17 @@ export const useInfiniteGames = () => {
   };
 
   const fetchGames = async () => {
-    const gamesResponse = await getGames(page.current, PAGE_SIZE);
-    setGames((prev) =>
-      page.current === 1
-        ? mapGames(gamesResponse.data)
-        : prev.concat(mapGames(gamesResponse.data))
-    );
+    try {
+      const gamesResponse = await getGames(page.current, PAGE_SIZE);
+
+      setGames((prev) =>
+        page.current === 1
+          ? mapGames(gamesResponse.data)
+          : prev.concat(mapGames(gamesResponse.data))
+      );
+    } catch {
+      toast.error("Ocorreu um erro ao recuperar itens do catálogo");
+    }
   };
 
   useEffect(() => {

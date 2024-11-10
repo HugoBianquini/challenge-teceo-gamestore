@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import GameList from "./partials/GameList";
 import { Container, Content, Header, TitleContainer, Wrapper } from "./styles";
 
@@ -15,6 +16,7 @@ const Home = () => {
           <GameList />
         </Content>
       </Container>
+      <ToastContainer />
     </Wrapper>
   );
 };
