@@ -20,6 +20,7 @@ export interface IGames {
   category: IGameCategory;
   platform: TGamePlatform;
   price: number;
+  discount: number;
   createdAt: string;
   lastUpdated: string;
 }
@@ -31,4 +32,14 @@ export interface IPaginatedResponse {
 
 export interface ICountResponse {
   total: string;
+}
+
+export interface IMassDiscountRequest {
+  percentage?: number;
+  selectedItens?: string[];
+  excludedItens?: string[];
+}
+
+export interface IMassDiscountResponse {
+  count: number;
 }

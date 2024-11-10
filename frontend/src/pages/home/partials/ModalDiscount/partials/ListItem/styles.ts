@@ -14,9 +14,21 @@ export const Container = styled.div`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 `;
 
-export const PriceText = styled.strong`
+export const GameTitle = styled.strong`
   font-size: larger;
   font-weight: bold;
+  width: 140px;
+`;
+
+export const PlatformText = styled.strong`
+  font-size: larger;
+  font-weight: bold;
+  width: 80px;
+`;
+
+export const PriceText = styled.strong`
+  font-size: large;
+  font-weight: 500;
   color: green;
 `;
 

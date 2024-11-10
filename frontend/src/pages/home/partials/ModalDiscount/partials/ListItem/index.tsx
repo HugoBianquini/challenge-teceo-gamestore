@@ -1,8 +1,14 @@
 import { formatToBRL } from "@/utils/priceFormatter";
-import { IListItem } from "./index.type";
-import { Container, FieldContainer, PriceText } from "./styles";
+import { EPlatform, IListItem } from "./index.type";
+import {
+  Container,
+  FieldContainer,
+  GameTitle,
+  PlatformText,
+  PriceText,
+} from "./styles";
 
-const ListItem = ({ game, index }: IListItem) => {
+const ListItem = ({ game }: IListItem) => {
   const calculateDiscount = () => {
     return formatToBRL(0.9 * game.price);
   };
@@ -11,12 +17,12 @@ const ListItem = ({ game, index }: IListItem) => {
     <Container>
       <FieldContainer>
         <span>Título</span>
-        <strong>{game.title}</strong>
+        <GameTitle>{game.title}</GameTitle>
       </FieldContainer>
 
       <FieldContainer>
         <span>Plataforma</span>
-        <strong>{game.platform}</strong>
+        <PlatformText>{EPlatform[game.platform]}</PlatformText>
       </FieldContainer>
 
       <FieldContainer>

@@ -40,7 +40,7 @@ const ModalDiscount = ({
           components={{ List }}
           increaseViewportBy={200}
         />
-        <Footer />
+        <Footer closeModal={closeModal} />
       </Container>
     </Modal>
   );
