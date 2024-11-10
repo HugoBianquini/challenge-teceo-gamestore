@@ -10,6 +10,10 @@ export interface IGameContext {
   setGames: React.Dispatch<React.SetStateAction<IGameItem[]>>;
   selectAll: boolean;
   setSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
+  excludedGames: string[];
+  setExcludedGames: React.Dispatch<React.SetStateAction<string[]>>;
+  totalCount: number;
+  setTotalCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface IGameProviderProps {

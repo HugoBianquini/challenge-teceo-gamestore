@@ -16,7 +16,7 @@ import { useGames } from "@/hooks/useGames";
 import { formatToBRL } from "@/utils/priceFormatter";
 
 const GameCard = ({ game, index }: IGameCardProps) => {
-  const { handleSelectGame } = useGames();
+  const { handleSelectGame, selectAll, excludedGames } = useGames();
 
   const [isEdit, setEdit] = useState(false);
 
@@ -24,8 +24,7 @@ const GameCard = ({ game, index }: IGameCardProps) => {
 
   const onSelect = useCallback(() => {
     handleSelectGame(index);
-    console.log(game);
-  }, [index]);
+  }, [index, selectAll, excludedGames]);
 
   const handleEditButtonClick = useCallback(() => {
     return setEdit((prev) => !prev);

@@ -43,7 +43,12 @@ const GameList = () => {
         )}
         components={{ Footer, Header, List: ListItem }}
       />
-      <ModalDiscount isOpen={isModalOpen} closeModal={closeModal} />
+      <ModalDiscount
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        fetchNextPage={fetchNextPage}
+        games={data}
+      />
     </Container>
   );
 };

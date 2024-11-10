@@ -7,20 +7,22 @@ import { useCallback, useContext, useEffect, useRef } from "react";
 const PAGE_SIZE = 10;
 
 export const useInfiniteGames = () => {
-  const { games, setGames } = useContext(GameContext);
+  const { games, setGames, selectAll, setTotalCount } = useContext(GameContext);
 
   const totalItems = useRef(0);
   const page = useRef(1);
 
   const fetchGamesCount = async () => {
     const count = await getGamesCount();
-    totalItems.current = parseInt(count.data.total);
+    const total = parseInt(count.data.total);
+    totalItems.current = total;
+    setTotalCount(total);
   };
 
   const mapGames = (games: IGames[]): IGameItem[] => {
     return games.map((game) => ({
       ...game,
-      isSelected: false,
+      isSelected: selectAll ? true : false,
     }));
   };
 
@@ -46,7 +48,7 @@ export const useInfiniteGames = () => {
 
     page.current = page.current + 1;
     fetchGames();
-  }, [totalPages]);
+  }, [totalPages, selectAll]);
 
   return {
     data: games,

@@ -6,6 +6,8 @@ export const GameContext = createContext<IGameContext>({} as IGameContext);
 export const GameProvider = ({ children }: IGameProviderProps) => {
   const [games, setGames] = useState<IGameItem[]>([]);
   const [selectAll, setSelectAll] = useState(false);
+  const [excludedGames, setExcludedGames] = useState<string[]>([]);
+  const [totalCount, setTotalCount] = useState<number>(0);
 
   const contextValue = useMemo(
     () => ({
@@ -13,8 +15,12 @@ export const GameProvider = ({ children }: IGameProviderProps) => {
       setGames,
       selectAll,
       setSelectAll,
+      excludedGames,
+      setExcludedGames,
+      totalCount,
+      setTotalCount,
     }),
-    [games, selectAll]
+    [games, selectAll, excludedGames, totalCount]
   );
 
   return (

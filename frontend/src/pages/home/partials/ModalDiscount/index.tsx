@@ -1,15 +1,20 @@
 import Modal from "@/components/Modal";
-import { Container, DescriptionContainer, Footer, List } from "./styles";
+import { Container, DescriptionContainer, List } from "./styles";
 import { Virtuoso } from "react-virtuoso";
 import ListItem from "./partials/ListItem";
-import { useGames } from "@/hooks/useGames";
-import { useInfiniteGames } from "@/hooks/useInfiniteGames";
-import Button from "@/components/Button";
 import { IModalProps } from "./index.type";
+import Footer from "./partials/Footer";
+import { useMemo } from "react";
 
-const ModalDiscount = ({ isOpen, closeModal }: IModalProps) => {
-  const { selectedGames } = useGames();
-  const { data } = useInfiniteGames();
+const ModalDiscount = ({
+  isOpen,
+  closeModal,
+  fetchNextPage,
+  games,
+}: IModalProps) => {
+  const listData = useMemo(() => {
+    return games.filter((item) => item.isSelected);
+  }, [games]);
 
   return (
     <Modal
@@ -29,14 +34,13 @@ const ModalDiscount = ({ isOpen, closeModal }: IModalProps) => {
         </DescriptionContainer>
         <Virtuoso
           className="list-selected"
-          data={data}
+          endReached={fetchNextPage}
+          data={listData}
           itemContent={(idx, item) => <ListItem game={item} index={idx} />}
           components={{ List }}
+          increaseViewportBy={200}
         />
-        <Footer>
-          <h3>{selectedGames.length} Itens para alteração</h3>
-          <Button>Confirmar</Button>
-        </Footer>
+        <Footer />
       </Container>
     </Modal>
   );
