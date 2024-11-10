@@ -20,7 +20,7 @@ const GameCard = ({ game, index }: IGameCardProps) => {
 
   const [isEdit, setEdit] = useState(false);
 
-  const { title, description, category, platform, price } = game;
+  const { title, description, category, platform, price, discount } = game;
 
   const onSelect = useCallback(() => {
     handleSelectGame(index);
@@ -31,11 +31,11 @@ const GameCard = ({ game, index }: IGameCardProps) => {
   }, []);
 
   const gamePrice = useMemo(() => {
-    if (game.discount > 0) {
-      return (1 - game.discount / 100) * game.price;
+    if (discount > 0) {
+      return (1 - discount / 100) * price;
     }
-    return game.price;
-  }, [game.price, game.discount]);
+    return price;
+  }, [price, discount]);
 
   return (
     <Container>
