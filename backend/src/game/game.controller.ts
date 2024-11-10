@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { GameService } from './game.service';
 import { UpdateGameDto } from './dto/update-game.dto';
+import { UpdateDiscountDto } from './dto/update-discount.dto';
 
 @Controller('games')
 export class GameController {
@@ -28,6 +29,11 @@ export class GameController {
   @Get('count')
   count() {
     return this.gameService.count();
+  }
+
+  @Patch('discount')
+  updateDiscount(@Body() updateDiscountRequest: UpdateDiscountDto) {
+    return this.gameService.updateDiscount(updateDiscountRequest);
   }
 
   @Get(':id')

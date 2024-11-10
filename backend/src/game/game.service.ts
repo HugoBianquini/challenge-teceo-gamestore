@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UpdateGameDto } from './dto/update-game.dto';
+import { UpdateDiscountDto } from './dto/update-discount.dto';
 
 @Injectable()
 export class GameService {
@@ -42,6 +43,24 @@ export class GameService {
   remove(id: string) {
     return this.prisma.game.delete({
       where: { id },
+    });
+  }
+
+  updateDiscount(updateDiscountRequest: UpdateDiscountDto) {
+    const {
+      percentage,
+      excludedItens = [],
+      selectedItens = [],
+    } = updateDiscountRequest;
+
+    const condition =
+      excludedItens.length > 0
+        ? { notIn: excludedItens }
+        : { in: selectedItens };
+
+    return this.prisma.game.updateMany({
+      where: { id: condition },
+      data: { discount: percentage },
     });
   }
 }
