@@ -54,9 +54,9 @@ export class GameService {
     } = updateDiscountRequest;
 
     const condition =
-      excludedItens.length > 0
-        ? { notIn: excludedItens }
-        : { in: selectedItens };
+      selectedItens.length > 0
+        ? { in: selectedItens }
+        : { notIn: excludedItens };
 
     return this.prisma.game.updateMany({
       where: { id: condition },
