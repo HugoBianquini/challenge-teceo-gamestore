@@ -9,7 +9,7 @@ import {
   TextContainer,
 } from "./styles";
 import Checkbox from "../Checkbox";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import EditableContent from "./partials/EditableContent";
 import { ECategory, EImagePlatform, IGameCardProps } from "./index.type";
 import { useGames } from "@/hooks/useGames";
@@ -29,6 +29,13 @@ const GameCard = ({ game, index }: IGameCardProps) => {
   const handleEditButtonClick = useCallback(() => {
     return setEdit((prev) => !prev);
   }, []);
+
+  const gamePrice = useMemo(() => {
+    if (game.discount > 0) {
+      return (1 - game.discount / 100) * game.price;
+    }
+    return game.price;
+  }, [game.price, game.discount]);
 
   return (
     <Container>
@@ -54,7 +61,7 @@ const GameCard = ({ game, index }: IGameCardProps) => {
           </TextContainer>
         )}
         <div>
-          <PriceText>{formatToBRL(price)}</PriceText>
+          <PriceText>{formatToBRL(gamePrice)}</PriceText>
         </div>
       </Content>
       <EditIconContainer onClick={handleEditButtonClick}>

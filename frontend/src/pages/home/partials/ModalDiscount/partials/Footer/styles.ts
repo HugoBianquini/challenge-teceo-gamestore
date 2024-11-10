@@ -14,3 +14,29 @@ export const Footer = styled.div`
   z-index: 12;
   margin-top: 8px;
 `;
+
+export const ContainerToast = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 16px;
+  padding-bottom: 8px;
+`;
+
+export const SmallButton = styled.button`
+  min-width: 80px;
+  padding: 6px 14px 6px 14px;
+  font-size: medium;
+  font-family: "Roboto";
+  border-radius: 12px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.grey[100]};
+  color: ${({ theme }) => theme.colors.dark};
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.light};
+  }
+`;

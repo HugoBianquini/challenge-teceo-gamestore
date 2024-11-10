@@ -1,5 +1,5 @@
 import { useGames } from "@/hooks/useGames";
-import { Footer } from "./styles";
+import { ContainerToast, Footer, SmallButton } from "./styles";
 import { useMemo, useState } from "react";
 import Button from "@/components/Button";
 import { updateMassDiscount } from "@/services/games";
@@ -24,6 +24,22 @@ const ModalFooter = ({ closeModal }: IFooterProps) => {
     return selectedGames.length;
   }, [selectAll, selectedGames, excludedGames]);
 
+  const showSuccesToast = (count: number) => {
+    toast.success(
+      <ContainerToast>
+        {count} itens atualizados com sucesso!
+        <SmallButton
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          Atualizar a página
+        </SmallButton>
+      </ContainerToast>,
+      { autoClose: false }
+    );
+  };
+
   const handleConfirmClick = async () => {
     const payload = {
       percentage: 10,
@@ -39,7 +55,7 @@ const ModalFooter = ({ closeModal }: IFooterProps) => {
       setLoading(false);
       handleRemoveSelection();
       closeModal();
-      toast.success(`${response.data.count} itens atualizados com sucesso!`);
+      showSuccesToast(response.data.count);
     } catch {
       setLoading(false);
       toast.error("Não foi possível realizar a alteração dos itens");
