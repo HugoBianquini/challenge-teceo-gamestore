@@ -41,8 +41,8 @@ Para rodar os projetos `backend` e `frontend` em conjunto, utilize o Docker Comp
    ```
 
 3. Após os contêineres subirem:
-   - O frontend estará acessível em: `http://localhost:3000`
-   - O backend estará acessível em: `http://localhost:8080`
+   - O frontend estará acessível em: `http://localhost:5173`
+   - O backend estará acessível em: `http://localhost:3000`
 
 OBS: Recomendo utilizar o frontend no computador, o layout ainda não está responsivo para dispositivos menores
 
