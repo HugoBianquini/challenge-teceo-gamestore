@@ -22,7 +22,7 @@ async function main() {
   const platforms = ['xbox', 'ps', 'pc', 'nintendo'];
   const status = ['available', 'unavailable'];
 
-  const gamesData = Array.from({ length: 40 }, () => ({
+  const gamesData = Array.from({ length: 500 }, () => ({
     title: `Jogo ${faker.commerce.product()}`,
     description: faker.lorem.sentences(2),
     price: parseFloat(faker.commerce.price({ min: 10, max: 100, dec: 2 })),
