@@ -1,5 +1,7 @@
 # Infinite GameStore
 
+<img width="1667" alt="Captura de Tela 2024-11-11 às 10 48 34" src="https://github.com/user-attachments/assets/aace806e-8fba-4940-afa3-1f3ef74e0880">
+
 ## Descrição
 
 O projeto **Infinite GameStore** é uma aplicação completa que combina um backend robusto em NestJS, um banco de dados PostgreSQL e um frontend performático utilizando React com Vite. O objetivo principal é implementar um sistema de infinite scroll virtualizado que permite a visualização de um número ilimitado de itens (games), além de funcionalidades que permitem a alteração individual dos itens e ações em massa, como aplicar descontos a todos os itens selecionados.
@@ -46,7 +48,7 @@ OBS: Recomendo utilizar o frontend no computador, o layout ainda não está resp
 
 ### Banco de Dados
 
-Ao executar o comando docker-compose up, o Prisma irá gerar automaticamente um seed para popular o banco de dados PostgreSQL com **500 games**. Isso facilita o processo de desenvolvimento e testes, permitindo que você interaja com dados já existentes na aplicação.
+Ao executar o comando docker compose up, o Prisma irá gerar automaticamente um seed para popular o banco de dados PostgreSQL com **500 games**. Isso facilita o processo de desenvolvimento e testes, permitindo que você interaja com dados já existentes na aplicação.
 
 ## Contribuição
 
