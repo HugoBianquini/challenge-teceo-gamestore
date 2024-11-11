@@ -14,7 +14,7 @@ import { UpdateDiscountDto } from './dto/update-discount.dto';
 
 @Controller('games')
 export class GameController {
-  constructor(private readonly gameService: GameService) {}
+  constructor(private gameService: GameService) {}
 
   @Get()
   findAll(
