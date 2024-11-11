@@ -50,6 +50,8 @@ OBS: Recomendo utilizar o frontend no computador, o layout ainda não está resp
 
 Ao executar o comando docker compose up, o Prisma irá gerar automaticamente um seed para popular o banco de dados PostgreSQL com **500 games**. Isso facilita o processo de desenvolvimento e testes, permitindo que você interaja com dados já existentes na aplicação.
 
+Com isso, pode ser que nos primeiros segundos o frontend não consiga realizar as requisições ao backend, uma vez que existe um pequeno delay para a criação do seed no banco de dados. Caso aconteça, aguarde alguns segundos e recarregue a página.
+
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
